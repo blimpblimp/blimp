@@ -151,7 +151,10 @@ body {
       <img src="media/lulu_2.jpg" alt="lulu_2.jpg" data-src="media/lulu_2.jpg">
 <!--       <img src="media/lulu_3.png" alt="lulu_3.png" data-src="media/lulu_3.png">
       <img src="media/BLIMP" alt="BLIMP" data-src="media/BLIMP"> -->
-      <img src="media/chobi_4.png" alt="chobi_4.png" data-src="media/chobi_4.png">
+      <video autoplay loop muted>
+                <source src="media/16bitcolorcovenant.mp4.mp4" type="video/mp4" />
+            </video>
+      <img src="media/BLIMP" alt="BLIMP" data-src="media/BLIMP">
       <img src="media/BLIMP" alt="BLIMP" data-src="media/BLIMP">
       <img src="media/BLIMP" alt="BLIMP" data-src="media/BLIMP">
       <img src="media/BLIMP" alt="BLIMP" data-src="media/BLIMP">
@@ -168,22 +171,38 @@ body {
     </p>
   </div>
 
-  <script>
+<script>
   document.addEventListener("DOMContentLoaded", function() {
       const collage = document.querySelector('#blog');
-      const images = collage.querySelectorAll('img');
+      const mediaItems = collage.querySelectorAll('img, video');
 
-      images.forEach(img => {
-          // Set the random position for each image
-          const x = Math.random() * (collage.clientWidth - img.clientWidth);
-          const y = Math.random() * (collage.clientHeight - img.clientHeight);
-          img.style.left = `${x}px`;
-          img.style.top = `${y}px`;
+      mediaItems.forEach(item => {
+          // Set the random position for each media item
+          const x = Math.random() * (collage.clientWidth - item.clientWidth);
+          const y = Math.random() * (collage.clientHeight - item.clientHeight);
+          item.style.position = 'absolute'; // Ensure absolute positioning
+          item.style.left = `${x}px`;
+          item.style.top = `${y}px`;
 
-          // Add click event to open the image in a new window
-          img.addEventListener('click', function() {
-              const src = img.getAttribute('data-src');
-              window.open(src, '_blank');
+          // Add click event to open the media in a new window
+          item.addEventListener('click', function() {
+              const src = item.getAttribute('data-src');
+              if (item.tagName === 'VIDEO') {
+                  // If it's a video, create a video player in a new window
+                  const videoWindow = window.open('', '_blank');
+                  videoWindow.document.write(`
+                      <html>
+                          <head><title>Video</title></head>
+                          <body>
+                              <video controls autoplay style="max-width:100%;"><source src="${src}" type="video/mp4"></video>
+                          </body>
+                      </html>
+                  `);
+                  videoWindow.document.close();
+              } else {
+                  // If it's an image, just open in a new window
+                  window.open(src, '_blank');
+              }
           });
       });
   });
