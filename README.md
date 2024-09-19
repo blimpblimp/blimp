@@ -1,4 +1,7 @@
 # blimp.github.io
 
-digital archive for the band blimp, based in los angeles, california
+official digital archive for blimp, a noise-rock quartet unified in 2022 and based in los angeles, california.
+
+www.iwantyoutobemine.com
+
 <3
