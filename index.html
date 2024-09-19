@@ -1,0 +1,678 @@
+
+<DOCTYPE! html>
+<!--
+
+      |
+          ||
+      __\ \||
+       __\ \||
+        __\ \||
+         __\ \|
+          __\ \
+             \ \
+              \ \
+               \ \
+              MMMMMMMMM                         MMMMMMMMM
+          MMMMMMMMMMMMMMMMMM               MMMMMMMMMMMMMMMMMM
+       MMMMMMMXXXXXXXXXXMMMMMMM         MMMMMMMXXXXXXXXXXMMMMMMM
+    MMMMMMXXXXXXXXXXXXXXXXXMMMMMM     MMMMMMXXXXXX:::::XXXXXXMMMMMM
+   MMMMMXXXXXXXX::::::::XXXXXXMMMM   MMMMXXXXXX:::::::::::XXXXXMMMMM
+  MMMMXXXXXXX:::::::::::::::XXXXMMM MMMXXXX::::::::::::::::::XXXXMMMM
+ MMMMXXXXXX::::::::::::::::::::XXXMMMXXX:::::::::::.....:::::::XXXMMMM
+ MMMXXXXX::::::::::::::::::::::::XXXXX:::::::::...........::::::XXXMMM
+MMMXXXXX:::::::::::.......:::::::::X::::::::......    ......::::XXXXMMM
+MMMXXXX:::::::::..............:::::::::::.......         ....::::XXXMMM
+MMMXXXX::::::::..................:::::.......             ...::::XXXMMM
+MMMXXXX:::::::.....................:............         ....::::XXXMMM
+MMMXXXX:::::::....................................       ....::::XXXMMM
+MMMXXXX:::::::......................................    .....::::XXXMMM
+MMMXXXXX::::::....................................... ......::::XXXXMMM
+MMMMXXXX:::::::.............................................::::XXXMMMM
+ MMMXXXX::::::::.......... <3 - ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~......::::XXXMMM
+ MMMMXXXX::::::::..............chobi was here...............::::XXXMMMM
+  MMMXXXX::::::::::........................................:::::XXXMMM
+  MMMMXXXX:::::::::::...................................::::::XXXMMMM
+   MMMXXXXX::::::::::::..............................::::::::XXXXMMM
+   MMMMXXXXX:::::::::::::.........................::::::::::XXXXMMMM
+    MMMMXXXXX:::::::::::::::...................::::::::::::XXXXMMMM
+     MMMMXXXXX:::::::::::::::::.............::::::::::::::XXXXMMMM
+      MMMMXXXXXX::::::::::::::::::.......::::::::::::::XXXXXXMMMM
+       MMMMXXXXXXXX::::::::::::::::...::::::::::::::XXXXXXXXMMMM
+         MMMMXXXXXXXXX::::::::::::::::::::::\::::XXXXXXXXXMMMM
+           MMMMMXXXXXXXXXX:::::::::::::::::\ \XXXXXXXXXMMMMM
+              MMMMMMXXXXXXXXXXX:::::::::XXXX\ \XXXXMMMMMM
+                  MMMMMMXXXXXXXXXXX:XXXXXXXXX\ \MMMMM
+                      MMMMMMXXXXXXXXXXXXXXXMMM\ \
+                          MMMMMMXXXXXXXMMMMMM  \ \
+                              MMMMMXMMMMM       \ \
+                                 MMMMM           \ \   \
+                                  MMM             \ \ \\
+                                   M             \\\\\\\
+                                                   \\\\\
+                                                     \\\
+                                                       \
+  -->
+<html lang="en">
+<head>
+<title>blimp</title>
+<meta name="description" content="blimp">
+<meta name="category" content="art">
+<meta name="google-site-verification" content="wbtyQEpeEal-hnrQ_OahoASmFM07E0qcZLq11Sc2l88" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<link rel="icon" href="bunnysparkle/bunnysparkle.crs" type="image/gif">
+
+<style>
+  body {
+  font-family: "VT323", system-ui, serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-kerning: -35px;
+  -webkit-text-size-adjust: auto%;
+}
+
+html,
+body {
+  width: 100vw;
+  overflow-y:auto;
+
+}
+
+.video-container {
+  right: 60;
+  top: 40;
+  width: 250px;
+  height: auto;
+  z-index: -100;
+  border-color: green;
+  border-style:double;
+  border-width:5px;
+  position: absolute;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+
+}
+
+
+a {
+  /* color: #0000EE; */
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
+  text-decoration:none;
+  font-weight:;
+}
+
+a:hover {
+/* color: #0000EE; */
+opacity: 1;
+cursor: pointer;
+ }
+
+.Menu-list {
+  font-size: 8rem;
+  margin-left:-10px;
+  line-height: 1.2;
+  letter-spacing: -24px;
+  text-transform: lowercase;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  /* -webkit-transform: rotateX(-10deg) rotateY(20deg);
+          transform: rotateX(-10deg) rotateY(20deg); */
+}
+
+.Menu-list-item {
+  position: relative;
+  color: transparent;
+  cursor: pointer;
+}
+.Menu-list-item::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 49%;
+  left: -10%;
+  right: -10%;
+  height: 14px;
+  margin-top: -2px;
+  background: cyan;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  transition: -webkit-transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+  transition: transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+  transition: transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98), -webkit-transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+  z-index: 1;
+}
+
+.Mask {
+  font-style: italic;
+  font-family: "Times New Roman", system-ui, serif;
+
+  border-width:5px;
+  display: block;
+  position: absolute;
+  overflow: none;
+  color: rgba(0, 0, 0);
+  top: 0;
+  height: 49%;
+  transition: all 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
+
+}
+.Mask span {
+  display: block;
+}
+
+.Mask + .Mask {
+  top: 48.9%;
+  height: 51.1%;
+}
+.Mask + .Mask span {
+  -webkit-transform: translateY(-49%);
+          transform: translateY(-49%);
+}
+
+.Menu-list-item:hover .Mask,
+.Menu-list-item:active .Mask {
+  color: rgba(0, 0, 0);
+  -webkit-transform: skewX(12deg) translateX(5px);
+          transform: skewX(12deg) translateX(5px);
+}
+.Menu-list-item:hover .Mask + .Mask,
+.Menu-list-item:active .Mask + .Mask {
+  -webkit-transform: skewX(0deg) translateX(-5px);
+          transform: skewX(0deg) translateX(-5px);
+}
+.Menu-list-item:hover::before,
+.Menu-list-item:active::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+#flower {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+    z-index: -1;
+    height:auto;
+    content: url('blimp.png');
+}
+#temple {
+    position: fixed;
+    margin:10px;
+    bottom:0;
+    right:0;
+    z-index: 2;
+    height:auto;
+    content: url('RAM-icon.png');
+}
+
+#temple:hover {
+cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+#info {
+    margin-top:-4px;
+    margin-left:10px;
+    margin-right:10px;
+    position: absolute;
+    width:100%;
+    line-height: 1rem;
+    font-style: italic;
+    height:auto;
+    display: none;
+    color: rgba(0, 0, 0);
+    text-align:left;
+}
+
+#merchlist {
+  position: absolute;
+  left: 30;
+  top: 300;
+  z-index: 2;
+  height: auto;
+  width: 250;
+  color: black;
+  overflow: auto;
+}
+
+#merchlist img{
+  width: 90%;
+  border: 10px solid cyan; /* Scale the image to fit the width of the container */
+  height: auto; /* Maintain the aspect ratio */
+  display: block; /* Remove any extra space below the image */
+}
+
+
+#listenlist {
+  position: absolute;
+  right: 350;
+  top: 125;
+  z-index: 1;
+  height: auto;
+  width: auto;
+  color: black;
+}
+
+#livelist {
+  position: absolute;
+  top: 200;
+  left: 30%;
+  z-index: 1;
+  height: auto;
+  width: auto;
+  color: white;
+  text-align:right;
+}
+
+
+#reverse-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: auto; /* Hide text overflow during typing */
+}
+
+#livelist p {
+
+background-color:black;
+
+}
+
+*{
+cursor: crosshair;
+}
+
+
+h1 {
+  font-size: 1.2em;
+  color: black;
+  text-transform: none;
+  background-color: lime;
+}
+
+h2 {
+  font-size: 1.2em;
+  color: black;
+  text-transform: lowercase;
+}
+
+  .textbox span{
+  border-right: .5em solid;
+  border-color: red;
+  animation: caret 1s steps(1) infinite;
+}
+
+
+@keyframes caret {
+  50% {
+    border-color: yellow;
+  }
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-KyZXEAg3QhqLMpG8r+Knujsl5/6vkgWl9j2PB99i9Kw=" crossorigin="anonymous"></script>
+
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+</head>
+
+<body translate="no">
+
+<div id="flower"></div>
+<a href="404.html"><div id="temple"></div></a>
+
+<div id="livelist" class="hidden">
+  <p id="reverse-text"></p>
+</div>
+
+<div id="listenlist" class="hidden">
+  <a href="https://blimpband.bandcamp.com/" target="_blank">&#9834; bandcamp</a><br>
+  <a href="https://open.spotify.com/artist/5r70c4qAGAlJ5WPuPkDdAC?si=Mji47VFMSAqa_0DnSqsUWA" target="_blank">&#9834; spotify</a>
+</div>
+<br>
+<div class="Menu">
+<ul class="Menu-list" data-offset="10">
+<li class="Menu-list-item" id="myinfo" data-offset="20" onclick="window.location.reload(); return false;">lime augary
+<span class="Mask"><span>_limp</span></span>
+<span class="Mask"><span>ß_i</span></span>
+</li>
+
+</ul>
+<div id="info">
+  <span class="textbox">
+  <h1>
+    ...
+  </h1>
+
+  </span>
+
+</div>
+
+</div>
+
+<div class="video-container">
+  <video autoplay loop muted width="100%">
+                <source src="PXL_20240713_083036901.mp4" type="video/mp4" />
+                <source src="Path To webm Video" type="video/webm" />
+            </video>
+</div>
+            <!-- If Videos are not supported this image will act as cover image-->
+
+<div id="merchlist" class="hidden">
+  <a href="404.html" target="_blank">
+   <img src="ren.png" alt="wearable">
+   clothing
+  </a><br><br>
+        <a href="https://www.semicollectiverecords.com/category/cassettes" target="_blank">
+          <img src="egg_cassette.png" alt="cassette1">
+        cassette (us) - sold out
+       </a><br><br>
+       <a href="https://hunkofplasticrecords.limitedrun.com/" target="_blank">
+        <img src="egg_cassette.png" alt="cassette2">
+        cassette (uk) - sold out
+      </a><br><br>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Check if the #info element is hidden
+    if ($('#info').css('display') === 'none') {
+        $("#info").fadeIn();
+
+        var eLink = '<a href="#" id="live"> live </a>';
+        var cvLink = '<a href="#" id="listen"> listen </a>';
+        var dLink = '<a href="#" id="merch"> merch </a>';
+        var fLink = '<a href="media.html"> media </a>';
+        var gLink = '<a href="mailto:thebandblimp@gmail.com" target="_blank"> contact  </a>';
+
+        // Array with texts to type in the typewriter
+        var dataText = [
+            '&quot;tell me the way, then,&quot; she said. &quot;and i&apos;ll search you out.&quot; <br> <br>' + eLink + '<br>' + cvLink + '<br>' + dLink + '<br>' + fLink + '<br>' + gLink + ''
+        ];
+
+        // Function to handle the typing animation
+        function typeWriter(text, i, fnCallback) {
+            if (i < text.length) {
+                document.querySelector("h1").innerHTML = text.substring(0, i + 4) + '<span aria-hidden="true"></span>';
+                setTimeout(function() {
+                    typeWriter(text, i + 3, fnCallback);
+                }, 100);
+            } else if (typeof fnCallback == 'function') {
+                setTimeout(fnCallback, 700);
+            }
+        }
+
+        // Function to start the typing animation
+        function StartTextAnimation(i) {
+            if (typeof dataText[i] == 'undefined') {
+                setTimeout(function() {
+                    StartTextAnimation(0);
+                }, 80000);
+            }
+
+            if (i < dataText.length) {
+                typeWriter(dataText[i], 0, function() {
+                    StartTextAnimation(i + 4);
+                });
+            }
+        }
+
+        // Introduce a 1-second delay before starting the text animation
+        setTimeout(function() {
+            StartTextAnimation(0);
+        }, 2000); // 1000 milliseconds = 1 second
+    }
+});
+</script>
+<!-- <script>
+  $(document).ready(function() {
+      $(document).on('click', '#live', function(event) {
+          event.preventDefault(); // Prevent the default link behavior
+          $('#livelist').removeClass('hidden'); // Show the hidden div
+
+          // Start animation after showing the div
+          animateLines();
+      });
+
+      function animateLines() {
+          const lines = $('#livelist .line');
+          let delay = 0; // Start delay for the first line
+
+          lines.each(function(index) {
+              // Set opacity to 0 initially
+              $(this).css({ opacity: 0 });
+
+              // Animate each line to fade in
+              $(this).delay(delay).animate({ opacity: 1 }, 0); // 1000ms for each line
+
+              // Increment the delay for the next line
+              delay += 50; // 1000ms delay between each line
+          });
+      }
+  });
+</script> -->
+
+<script>
+  $(document).ready(function() {
+    $(document).on('click', '#listen', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        $('#listenlist').removeClass('hidden');
+      });
+    });
+</script>
+<script>
+  $(document).ready(function() {
+    $(document).on('click', '#merch', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        $('#merchlist').removeClass('hidden');
+      });
+    });
+</script>
+<script>
+  $(document).ready(function() {
+    $(document).on('click', '#live', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        $('#livelist').removeClass('hidden'); // Show the hidden div
+
+        const originalText = `&#9834;&#9834; FUTURE:
+
+        34.0823344, -118.3022386 | 09.13.24 | JULIE <3 BLIMP 4EVR
+        34.1091118, -118.194564 | 09.07.24 | CORRIDOR, DUMMY, LOCKSLIP, TIME WHARP
+
+        &#9834;&#9834; PAST:
+
+        33.9709891, -118.416191 | 08.26.24 | @ 88.9 FM
+        36.1503122, -115.202287 | 08.24.24 | CROCHET, FAT LADY SANG, PUDGEL, SPRING BREEDING
+        35.1967869, -111.650020 | 08.23.24 | FAT LADY SANG, FEED, WASHED
+        33.4148563, -111.834545 | 08.22.24 | FAT LADY SANG, MISERABLE GHOST, JOURNAL
+        32.2222282, -110.966663 | 08.21.24 | CLOSET GOTH, FAT LADY SANG, POLICE STATE
+        32.7368553, -117.1557561 | 08.20.24 | FAT LADY SANG, RECLUSR, SLEEPING RITUAL, STYLASTER
+
+        34.0777013, -118.2601106 | 05.04.24 | COMPUTERWIFE, JUGGLER
+        34.0576591, -117.7521287 | 06.26.24 | INCARI, MILDRED, WASHED
+        34.1008478, -118.235117 | 04.05.24 | MILLY
+        37.7878615, -122.4213684 | 03.15.24 | JANE REMOVER, MIDRIFT, QUANNIC, YEULE
+
+        33.6997771, -117.9175559 | 12.02.23 | JULIE, ROCKET
+        33.6997771, -117.9175559 | 12.01.23 | JULIE, ROCKET
+        39.7599530, -104.9838086 | 11.08.23 | JULIE
+        41.9396643, -87.6653408 | 11.06.23 | JULIE
+        40.0156545, -83.0118658 | 11.05.23 | JULIE
+        40.6963791, -73.9299654 | 11.03.23 | COHORT B, HER NEW KNIFE, PLASTIC
+        41.3152909, -72.9106710 | 11.02.23 | LOLA STAR, PEOPLEYELOVE
+        40.7104048, -73.9231972 | 11.01.23 | BOYSINBLUSH, RAINDROP MASSACRE, YOUNG JUNE
+        39.9491165, -75.2137733 | 10.30.23 | COUCH, HARSH NO DEMO, RUTH IN THE BARDO
+        38.6253772, -77.3896104 | 10.29.23 | FFTD, HARSH INTENTION, VENUS TWINS
+        40.0156746, -83.0118320 | 10.28.23 | JULIE
+        32.7844656, -96.7839224 | 10.26.23 | JULIE
+        29.7538144, -95.3639476 | 10.25.23 | JULIE
+        30.2701640, -97.7360639 | 10.24.23 | JULIE
+        32.2222282, -110.966663 | 10.22.23 | JULIE
+
+        34.1008478, -118.235117 | 08.25.23 | BONDO, VERSING
+        37.8040933, -122.267181 | 08.18.23 | EMOTEGI, JUNIPERFIELDS, MAU, SHAPES
+        34.0658958, -118.223865 | 07.09.23 | KNUMEARS, ROCKET
+        33.9215811, -118.361972 | 06.27.23 | CENOBITE, FAMILY MEMBERS, GROMIT, MONETTE, TAILBONE
+        34.0448632, -118.203907 | 06.23.23 | CHATTERTON, TRIPLE GEM, THE WASH
+        34.0431524, -118.460872 | 03.18.23 | INFRARED, MACHINE POLHIK, TRANSMIT
+        34.1008478, -118.235117 | 03.10.23 | AGRICULTURE, BLUE ZERO, DUMMY, ROCKET
+        34.0828902, -118.273647 | 09.06.22 | LOTTO, PHAEIC
+        34.1008478, -118.235117 | 05.04.22 | CREEKS, HUSHMONEY
+        34.0828902, -118.273647 | 01.14.22 | CARINAE, TEV NICOLAS/THE TRAGIC BAND`;
+
+      // Split the original text by newlines to handle each line separately
+      const lines = originalText.split('\n');
+      const $p = $('#reverse-text');
+
+      // Initialize an array to represent the reversed text with line breaks
+      const reversedLines = lines.map(line => new Array(line.length).fill(''));
+
+      let currentLine = lines.length - 1;
+      let index = lines[currentLine].length - 1;
+
+      function typeText() {
+          if (currentLine >= 0) {
+              if (index >= 0) {
+                  reversedLines[currentLine][index] = lines[currentLine][index];
+                  $p.html(reversedLines.map(line => line.join('')).join('<br>'));
+                  index--;
+                  setTimeout(typeText, 10); // Adjust typing speed here
+              } else {
+                  // Move to the previous line when the current line is fully typed
+                  currentLine--;
+                  if (currentLine >= 0) {
+                      index = lines[currentLine].length - 1;
+                      typeText(); // Continue typing the previous line
+                  }
+              }
+          }
+      }
+
+      typeText();
+  });
+});
+</script>
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+<!-- <script id="rendered-js">
+      var $menu = $('.Menu-list'),
+$item = $('.Menu-list-item'),
+w = $(window).width(), //window width
+h = $(window).height(); //window height
+    </script>
+
+<script language="javascript" type="text/javascript">
+
+var no = 50;
+var speed = 15;
+var ie4up = (document.all) ? 1 : 0;
+var ns4up = !ie4up;
+var s, x, y, sn, cs;
+var a, r, cx, cy;
+var i, doc_width = 800, doc_height = 600;
+if (ns4up) {
+doc_width = self.innerWidth;
+doc_height = self.innerHeight;
+}
+else
+if (ie4up) {
+doc_width = document.body.clientWidth;
+doc_height = document.body.clientHeight;
+}
+x = new Array();
+y = new Array();
+r = new Array();
+cx = new Array();
+cy = new Array();
+s = 8;
+for (i = 0; i < no; ++ i) {
+initRain();
+document.write("<div id=\"dot"+ i +"\" style=\"POSITION: ");
+document.write("absolute; Z-INDEX: "+ i +"; VISIBILITY: ");
+document.write("visible; TOP: 15px; LEFT: 15px;\"><font color=\"green\" size=\"4px\">");
+document.write("♪</font></div>");
+}
+function initRain() {
+a = 6;
+r[i] = 1;
+sn = Math.sin(a);
+cs = Math.cos(a);
+cx[i] = Math.random() * doc_width + 1;
+cy[i] = Math.random() * doc_height + 1;
+x[i] = r[i] * sn + cx[i];
+y[i] = cy[i];
+}
+function makeRain() {
+r[i] = 1;
+cx[i] = Math.random() * doc_width + 1;
+cy[i] = 1;
+x[i] = r[i] * sn + cx[i];
+y[i] = r[i] * cs + cy[i];
+}
+function updateRain() {
+r[i] += s;
+x[i] = r[i] * sn + cx[i];
+y[i] = r[i] * cs + cy[i];
+}
+function raindropNS() {
+for (i = 0; i < no; ++ i) {
+updateRain();
+if ((x[i] <= 1) || (x[i] >= (doc_width - 20)) || (y[i] >= (doc_height - 20))) {
+makeRain();
+doc_width = self.innerWidth;
+doc_height = self.innerHeight;
+}
+document.getElementById("dot"+i).style.top = y[i];
+document.getElementById("dot"+i).style.left = x[i];
+}
+setTimeout("raindropNS()", speed);
+}
+function raindropIE() {
+for (i = 0; i < no; ++ i) {
+updateRain();
+if ((x[i] <= 1) || (x[i] >= (doc_width - 20)) || (y[i] >= (doc_height - 20))) {
+makeRain();
+doc_width = document.body.clientWidth;
+doc_height = document.body.clientHeight;
+}
+document.all["dot"+i].style.pixelTop = y[i];
+document.all["dot"+i].style.pixelLeft = x[i];
+}
+setTimeout("raindropIE()", speed);
+}
+if (ns4up) {
+raindropNS();
+}
+else
+if (ie4up) {
+raindropIE();
+}
+</script> -->
+
+
+</body>
+</html>
