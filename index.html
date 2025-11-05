@@ -411,28 +411,32 @@ $(document).ready(function() {
     if ($('#info').css('display') === 'none') {
         $("#info").fadeIn();
 
-        var eLink = '<a href="#" id="live"> live </a>';
-        var cvLink = '<a href="#" id="listen"> listen </a>';
-        var dLink = '<a href="#" id="merch"> merch </a>';
-        var fLink = '<a href="media.html"> media </a>';
-        var gLink = '<a href="https://instagram.com/blimpblimpblimpblimp" target="_blank"> instagram  </a>';
-
         // Array with texts to type in the typewriter
-        var dataText = [
-            '&quot;tell me the way, then,&quot; she said. &quot;and i&apos;ll search you out.&quot; <br> <br>' + eLink + '<br>' + cvLink + '<br>' + dLink + '<br>' + fLink + '<br>' + gLink + ''
-        ];
+var dataText = [
+  '&quot;tell me the way, then,&quot; she said. &quot;and i&apos;ll search you out.&quot; <br><br>' +
+  '<a href="#" id="live">live</a><br>' +
+  '<a href="#" id="listen">listen</a><br>' +
+  '<a href="#" id="merch">merch</a><br>' +
+  '<a href="media.html">media</a><br>' +
+  '<a href="https://instagram.com/blimpblimpblimpblimp" target="_blank">instagram</a>'
+];
 
-        // Function to handle the typing animation
         function typeWriter(text, i, fnCallback) {
-            if (i < text.length) {
-                document.querySelector("h1").innerHTML = text.substring(0, i + 4) + '<span aria-hidden="true"></span>';
-                setTimeout(function() {
-                    typeWriter(text, i + 3, fnCallback);
-                }, 100);
-            } else if (typeof fnCallback == 'function') {
-                setTimeout(fnCallback, 700);
-            }
-        }
+    if (i < text.length) {
+        // Get the next chunk of text
+        let currentText = text.substring(0, i);
+
+        // Render safely as real HTML
+        document.querySelector("h1").innerHTML = currentText + '<span aria-hidden="true"></span>';
+
+        // Continue typing
+        setTimeout(function() {
+            typeWriter(text, i + 3, fnCallback);
+        }, 100);
+    } else if (typeof fnCallback === 'function') {
+        setTimeout(fnCallback, 700);
+    }
+}
 
         // Function to start the typing animation
         function StartTextAnimation(i) {
