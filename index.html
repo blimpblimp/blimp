@@ -668,6 +668,81 @@ raindropIE();
 }
 </script> -->
 
+      <div id="bouncing-box" style="position: absolute; width: 150px; text-align: center; cursor: move; z-index: 999;">
+    <div id="canvas-container"></div>
+    <p style="font-family: monospace; color: #32cd32; font-size: 14px; margin-top: 5px; background: rgba(0,0,0,0.7); display: inline-block; padding: 2px 5px;">
+        saccharine music video
+    </p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+<script>
+let x, y, xspeed, yspeed;
+let boxWidth = 150;
+let boxHeight = 180;
+let currentColor;
+// High-contrast "old web" palette: Lime, Cyan, Magenta, Yellow, White
+let colors = ['#32cd32', '#00ffff', '#ff00ff', '#ffff00', '#ffffff']; 
+let colorIndex = 0;
+
+new p5((p) => {
+    p.setup = () => {
+        let canvas = p.createCanvas(150, 150, p.WEBGL);
+        canvas.parent('canvas-container');
+        
+        // Starting position and speed
+        x = p.random(0, window.innerWidth - boxWidth);
+        y = p.random(0, window.innerHeight - boxHeight);
+        xspeed = 2.5;
+        yspeed = 2.5;
+        currentColor = p.color(colors[colorIndex]);
+    };
+
+    p.draw = () => {
+        p.clear();
+        p.noFill();
+        p.stroke(currentColor);
+        p.strokeWeight(1.5);
+        
+        // Geometry movement
+        p.rotateX(p.frameCount * 0.01);
+        p.rotateY(p.frameCount * 0.01);
+        p.torus(40, 15);
+        
+        let el = document.getElementById('bouncing-box');
+        let textLabel = el.querySelector('p');
+        
+        x += xspeed;
+        y += yspeed;
+
+        // Collision Logic
+        let hit = false;
+
+        if (x + boxWidth >= window.innerWidth || x <= 0) {
+            xspeed *= -1;
+            hit = true;
+        }
+        if (y + boxHeight >= window.innerHeight || y <= 0) {
+            yspeed *= -1;
+            hit = true;
+        }
+
+        if (hit) {
+            // Cycle to the next color in the array
+            colorIndex = (colorIndex + 1) % colors.length;
+            currentColor = p.color(colors[colorIndex]);
+            
+            // Update the text background/border color too for extra flavor
+            textLabel.style.color = colors[colorIndex];
+            textLabel.style.border = `1px solid ${colors[colorIndex]}`;
+        }
+
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+    };
+});
+</script>
 
 </body>
 </html>
