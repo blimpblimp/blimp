@@ -104,22 +104,23 @@ body {
 }
 
 .video-container {
-  right: 60;
-  top: 40;
-  width: 300;
+  position: absolute;
+  right: 60px;       /* Added px */
+  top: 40px;         /* Added px */
+  width: 300px;      /* Added px */
+  height: 200px;     /* Added a fixed height to constrain the box */
   z-index: -100;
   border-color: green;
-  border-style:double;
-  border-width:5px;
-  position: absolute;
+  border-style: double;
+  border-width: 5px;
 }
 
-
 .video-container img {
+  display: block;    /* Removes the baseline text gap */
   width: 100%;
+  height: 100%;      /* Forces the image to fill the container's height */
+  object-fit: cover; /* Now this will crop the image nicely into the 300x200 box */
   z-index: 0;
-  display: block;
-
 }
 
 
