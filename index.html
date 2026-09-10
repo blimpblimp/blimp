@@ -695,84 +695,137 @@ if (ie4up) {
 raindropIE();
 }
 </script> -->
-
-      <div id="bouncing-box" style="position: absolute; width: 150px; text-align: center; cursor: move; z-index: 999;">
+<div id="box-1" style="position: absolute; width: 150px; text-align: center; cursor: pointer; z-index: 999;">
     <a href="https://youtu.be/CereyZkWlAQ?si=oxVBYi7HPwxU9oSo" target="_blank" style="text-decoration: none;">
-          <div id="canvas-container"></div>
-    <p style="font-family: monospace; color: #32cd32; font-size: 14px; margin-top: 5px; background: rgba(0,0,0,0.7); display: inline-block; padding: 2px 5px;">
-        saccharine music video
-    </p>
+        <div id="canvas-container-1"></div>
+        <p style="font-family: monospace; color: #32cd32; font-size: 14px; margin-top: 5px; background: rgba(0,0,0,0.7); display: inline-block; padding: 2px 5px; border: 1px solid #32cd32;">
+            saccharine music video
+        </p>
+    </a>
+</div>
+
+<div id="box-2" style="position: absolute; width: 150px; text-align: center; cursor: pointer; z-index: 999;">
+    <a href="https://www.youtube.com/watch?v=jUAGWH7w1_k" target="_blank" style="text-decoration: none;">
+        <div id="canvas-container-2"></div>
+        <p style="font-family: monospace; color: #ff00ff; font-size: 14px; margin-top: 5px; background: rgba(0,0,0,0.7); display: inline-block; padding: 2px 5px; border: 1px solid #ff00ff;">
+            awayward music video
+        </p>
+    </a>
+</div>
+
+<div id="box-3" style="position: absolute; width: 150px; text-align: center; cursor: pointer; z-index: 999;">
+    <a href="https://youtu.be/wUOQNVbYATM?is=HpgVYi721XNUWqpa" target="_blank" style="text-decoration: none;">
+        <div id="canvas-container-3"></div>
+        <p style="font-family: monospace; color: #00ffff; font-size: 14px; margin-top: 5px; background: rgba(0,0,0,0.7); display: inline-block; padding: 2px 5px; border: 1px solid #00ffff;">
+            stream entry mv
+        </p>
     </a>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 
 <script>
-let x, y, xspeed, yspeed;
+let colors = ['#32cd32', '#00ffff', '#ff00ff', '#ffff00', '#ffffff'];
 let boxWidth = 150;
 let boxHeight = 180;
-let currentColor;
-// High-contrast "old web" palette: Lime, Cyan, Magenta, Yellow, White
-let colors = ['#32cd32', '#00ffff', '#ff00ff', '#ffff00', '#ffffff']; 
-let colorIndex = 0;
 
-new p5((p) => {
-    p.setup = () => {
-        let canvas = p.createCanvas(150, 150, p.WEBGL);
-        canvas.parent('canvas-container');
-        
-        // Starting position and speed
-        x = p.random(0, window.innerWidth - boxWidth);
-        y = p.random(0, window.innerHeight - boxHeight);
-        xspeed = 2.5;
-        yspeed = 2.5;
-        currentColor = p.color(colors[colorIndex]);
-    };
+// Configured each box with unique positions, speeds, initial colors, and 3D shapes
+let boxes = [
+    {
+        id: 'box-1',
+        containerId: 'canvas-container-1',
+        x: 50,
+        y: 100,
+        xspeed: 2.5,
+        yspeed: 2.5,
+        colorIndex: 0,
+        shape: 'torus'
+    },
+    {
+        id: 'box-2',
+        containerId: 'canvas-container-2',
+        x: Math.random() * (window.innerWidth - boxWidth),
+        y: Math.random() * (window.innerHeight - boxHeight),
+        xspeed: -3.8,  // Steeper, faster trajectory
+        yspeed: 1.8,
+        colorIndex: 2,
+        shape: 'box'
+    },
+    {
+        id: 'box-3',
+        containerId: 'canvas-container-3',
+        x: Math.random() * (window.innerWidth - boxWidth),
+        y: Math.random() * (window.innerHeight - boxHeight),
+        xspeed: 1.5,   // Slower, wide-angle trajectory
+        yspeed: -4.2,
+        colorIndex: 1,
+        shape: 'cone'
+    }
+];
 
-    p.draw = () => {
-        p.clear();
-        p.noFill();
-        p.stroke(currentColor);
-        p.strokeWeight(1.5);
-        
-        // Geometry movement
-        p.rotateX(p.frameCount * 0.01);
-        p.rotateY(p.frameCount * 0.01);
-        p.torus(40, 15);
-        
-        let el = document.getElementById('bouncing-box');
-        let textLabel = el.querySelector('p');
-        
-        x += xspeed;
-        y += yspeed;
+boxes.forEach((b) => {
+    new p5((p) => {
+        let currentColor;
 
-        // Collision Logic
-        let hit = false;
+        p.setup = () => {
+            let canvas = p.createCanvas(150, 150, p.WEBGL);
+            canvas.parent(b.containerId);
+            currentColor = p.color(colors[b.colorIndex]);
+        };
 
-        if (x + boxWidth >= window.innerWidth || x <= 0) {
-            xspeed *= -1;
-            hit = true;
-        }
-        if (y + boxHeight >= window.innerHeight || y <= 0) {
-            yspeed *= -1;
-            hit = true;
-        }
+        p.draw = () => {
+            p.clear();
+            p.noFill();
+            p.stroke(currentColor);
+            p.strokeWeight(1.5);
 
-        if (hit) {
-            // Cycle to the next color in the array
-            colorIndex = (colorIndex + 1) % colors.length;
-            currentColor = p.color(colors[colorIndex]);
-            
-            // Update the text background/border color too for extra flavor
-            textLabel.style.color = colors[colorIndex];
-            textLabel.style.border = `1px solid ${colors[colorIndex]}`;
-        }
+            // Rotate geometry
+            p.rotateX(p.frameCount * 0.01);
+            p.rotateY(p.frameCount * 0.01);
 
-        el.style.left = x + 'px';
-        el.style.top = y + 'px';
-    };
+            // Render distinct 3D shape per video
+            if (b.shape === 'torus') {
+                p.torus(40, 15);
+            } else if (b.shape === 'box') {
+                p.box(50);
+            } else if (b.shape === 'cone') {
+                p.cone(40, 60);
+            }
+
+            let el = document.getElementById(b.id);
+            let textLabel = el.querySelector('p');
+
+            b.x += b.xspeed;
+            b.y += b.yspeed;
+
+            let hit = false;
+
+            // Bounce check against boundaries
+            if (b.x + boxWidth >= window.innerWidth || b.x <= 0) {
+                b.xspeed *= -1;
+                hit = true;
+            }
+            if (b.y + boxHeight >= window.innerHeight || b.y <= 0) {
+                b.yspeed *= -1;
+                hit = true;
+            }
+
+            if (hit) {
+                // Cycle color on hit
+                b.colorIndex = (b.colorIndex + 1) % colors.length;
+                currentColor = p.color(colors[b.colorIndex]);
+
+                textLabel.style.color = colors[b.colorIndex];
+                textLabel.style.border = `1px solid ${colors[b.colorIndex]}`;
+            }
+
+            el.style.left = b.x + 'px';
+            el.style.top = b.y + 'px';
+        };
+    });
 });
 </script>
+
 
 </body>
 </html>
